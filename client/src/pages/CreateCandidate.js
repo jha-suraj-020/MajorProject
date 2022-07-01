@@ -94,7 +94,7 @@ function CreateContest() {
             </Form.Group>
             <Form.Group className="mb-3" >
                 <Form.Label>Description:</Form.Label>
-                <Form.Control type="text" onChange={e => setDescription(e.target.value)} placeholder="Enter description for ccandidate" />
+                <Form.Control type="text" onChange={e => setDescription(e.target.value)} placeholder="Enter description for candidate" />
             </Form.Group>
             <Form.Group className="mb-3" >
                 <Form.Label>Candidate Public Address:</Form.Label>

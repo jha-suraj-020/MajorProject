@@ -28,6 +28,8 @@ function ContestDetails() {
   const [manager, SetManager] = useState();
   const [votersCount, SetVotersCount] = useState();
 
+  const [winner, SetWinner] = useState();
+
   const param = useParams();
 
   const history = useNavigate();
@@ -97,6 +99,7 @@ function ContestDetails() {
     SetActive(await contest.methods.active().call())
     SetVotersCount(await contest.methods.votersCount().call())
     SetManager(await contest.methods.manager().call())
+    SetWinner(await contest.methods.winner().call())
     
     const _candidates = await contest.methods.getCandidates().call();
     console.log(_candidates)
@@ -121,7 +124,7 @@ function ContestDetails() {
               <p className="lead"> <b>About: </b>{desc}</p>
               <p className="lead"> <b>Manager: </b>{manager}</p>
               <p className="lead"> <b>Number Of Candidates: </b>{noOfCandidates}</p>
-              <p className="lead"> <b>Prize Money: </b>{prizeAmount}</p>
+              <p className="lead"> <b>Prize Money: </b>{prizeAmount/Math.pow(10,18)} ether</p>
               <p className="lead"> <b>No of voters voted till now: </b>{votersCount}</p>
 
               <p className="lead"> <b>Active: </b>{active ? <span> Yes</span> : <span> No</span> }</p>
@@ -144,7 +147,7 @@ function ContestDetails() {
           </Row>
 
           <div>
-            {candidates.map(item => <CandidateCard key={item} item={item} Contestsm={Contestsm} Currentaccount={Currentaccount}/>)}
+            {candidates.map(item => <CandidateCard key={item} item={item} Contestsm={Contestsm} Currentaccount={Currentaccount} completed={completed} winner={winner}/>)}
           </div>
         </div>
     </div>

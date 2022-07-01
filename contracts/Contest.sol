@@ -51,6 +51,8 @@ contract Contest {
     bool public completed;
     bool public active;
 
+    uint public winner;
+
     modifier restricted() {
         require(msg.sender == manager);
         _;
@@ -112,6 +114,7 @@ contract Contest {
 
         active = false;
         completed = true;
+        winner = index;
     }
 
     function activateContest() public restricted {
