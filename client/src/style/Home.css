@@ -1,0 +1,29 @@
+.container{
+    padding: 10rem;
+}
+
+.typewriter{
+    font-size: 1.8rem;
+}
+
+.register-button{
+    border: none;
+    font-size: 1.5rem;
+    padding: 1rem;
+    background-color: #2C3639;
+    box-shadow: 2px 2px 10px black;
+    border-radius: .5rem;
+    margin: 2rem;
+    color: white;
+}
+
+.login-button{
+    border: none;
+    font-size: 1.5rem;
+    padding: 1rem;
+    background-color: #2C3639;
+    box-shadow: 2px 2px 10px black;
+    border-radius: .5rem;
+    margin: 2rem;
+    color: white;
+}
