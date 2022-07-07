@@ -28,7 +28,7 @@ function ContestCard({item, Contestsm, Currentaccount, completed, winner}) {
         <Card.Subtitle className="mb-3 text-muted">{item.recipient}</Card.Subtitle>
         <Card.Text>
             <b>About: </b> {item.description} <br></br>
-            <b>Votes: </b> {item.voteCount}
+            <b>Votes: </b> {completed && item.voteCount}
         </Card.Text>
         <Button variant="info" onClick={handleClick}>Vote</Button>
         </Card.Body>

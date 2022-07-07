@@ -7,6 +7,7 @@ import Header from '../components/Header';
 import CandidateCard from '../components/CandidateCard';
 import { Button, Card, Col, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
 
 function ContestDetails() {
   useEffect(() => {
@@ -34,6 +35,8 @@ function ContestDetails() {
 
   const history = useNavigate();
 
+  const baseURL = `http://localhost:3001/certificate/${param.id}`
+
   const handleClick = (e)=>{
     history(`/contest/${param.id}/create`)
   }
@@ -58,6 +61,32 @@ function ContestDetails() {
       });
 
     window.location.reload();
+  }
+
+  const handleCertify = async (e)=>{
+    const response = await axios.post(baseURL, {
+      name: candidates[winner].name,
+      addr: candidates[winner].recipient,
+      contestName: name
+    })
+
+    console.log(response)
+    alert("Certificated generated...")
+  }
+
+  const handleViewCertificate = async (e)=>{
+    const response = await axios.get(baseURL)
+    console.log(response.data.data.data)
+
+    const arr = new Uint8Array(response.data.data.data);
+
+    const file = new Blob(
+      [arr], 
+      {type: 'application/pdf'});
+
+    const fileURL = URL.createObjectURL(file);
+
+    window.open(fileURL);
   }
 
   const loadWeb3 = async () => {
@@ -133,9 +162,18 @@ function ContestDetails() {
             </Col>
             <Col xs={3}>
               <br></br>
-              <Button className='d-block mb-3' onClick={handleClick}>Create Candidate</Button>
-              <Button className='d-block mb-3' onClick={handleActivate}>Activate</Button>
-              <Button className='d-block' onClick={handleFinalize}>Finalize</Button>
+              { Currentaccount == manager &&
+                <div>
+                  <Button className='d-block mb-3' onClick={handleClick}>Create Candidate</Button>
+                  <Button className='d-block mb-3' onClick={handleActivate}>Activate</Button>
+                  <Button className='d-block mb-3' onClick={handleFinalize}>Finalize</Button>
+                  <Button className='d-block mb-3' onClick={handleCertify}>Certify</Button>
+                </div>
+              }
+              
+              { completed &&
+                <Button className='d-block' onClick={handleViewCertificate}>View Certificate</Button>
+              }
             </Col>
           </Row>
 

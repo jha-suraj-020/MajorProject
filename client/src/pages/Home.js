@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
+import { useNavigate } from 'react-router-dom';
 import Typewriter from 'typewriter-effect'
 import Navbar from '../components/Navbar'
 import '../style/Home.css'
 
-export default class Home extends Component {
-  render() {
-    return (
+
+function Home () {
+  const history = useNavigate();
+
+  return (
       <div>
         <Navbar/>
-        <div className="container">
+        <div className="container" style={{padding: "10rem 3rem"}}>
             <div className='row'>
               <div className='col'>
                 <div className="home-text">
@@ -44,11 +47,11 @@ export default class Home extends Component {
                 <div className="home-button">
                   <button className="register-button"
                     style={{ marginRight: '15px' }}
-                    onClick={() => this.props.history.push('/signup')}
+                    onClick={() => history('/signup')}
                   >
                     REGISTER
                   </button>{' '}
-                  <button className='login-button' onClick={() => this.props.history.push('/login')}>
+                  <button className='login-button' onClick={() => history('/login')}>
                     LOGIN
                   </button>
                 </div>
@@ -59,6 +62,7 @@ export default class Home extends Component {
             </div>
           </div>
       </div>
-    )
-  }
+  )
 }
+
+export default Home

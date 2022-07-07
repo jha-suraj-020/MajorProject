@@ -5,6 +5,7 @@ import Contest from './pages/Contests';
 import CreateContest from './pages/CreateContest';
 import ContestDetails from './pages/ContestDetails';
 import CreateCandidate from './pages/CreateCandidate';
+import SignUp from './pages/SignUp';
 import Login from "./pages/Login";
 
 function App() {
@@ -12,8 +13,9 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" exact element={<Home />}/>
-          <Route path="/contest" element={<Contest />}/>
           <Route path="/login" element={<Login />}/>
+          <Route path="/signup" element={<SignUp />}/>
+          <Route path="/contest" element={<Contest />}/>
           <Route path="/create" element={<CreateContest />}/>
           <Route path="/contest/:id" element={<ContestDetails />}/>
           <Route path="/contest/:id/create" element={<CreateCandidate />}/>
