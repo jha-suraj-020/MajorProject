@@ -20,9 +20,9 @@ function Navbar() {
                         <li class="nav-item">
                         <a class="nav-link" href="/signup">SIGNUP</a>
                         </li>
-                        <li class="nav-item">
+                        {/* <li class="nav-item">
                         <a class="nav-link" href="/">FAQ</a>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
             </div>
